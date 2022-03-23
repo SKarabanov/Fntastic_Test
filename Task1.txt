@@ -1,0 +1,55 @@
+string UpdateString(string InStr)
+{
+    string TempString=InStr;
+
+    for (int i = 0; i < (InStr.length()); i++)
+    {
+        bool bFound = false;
+
+
+        for (int j = 0; j < (InStr.length()); j++)
+        {
+            bFound = false;
+
+            if (i != j)
+            {
+                bool IsEqualSize = !(((int(InStr[i]) <= 91 && int(InStr[j]) > 91))|| ((int(InStr[j]) <= 91 && int(InStr[i]) > 91)));
+
+                if ( IsEqualSize)
+                {
+                 
+                    if (int(InStr[i]) == int(InStr[j]))
+                    {
+                        bFound = true;
+                        break;
+                    }
+
+                }
+                else
+                {
+                    
+                    bool A_IsMore_B = int(InStr[i]) > int(InStr[j]);
+
+                    if (A_IsMore_B)
+                    {
+                        if ((int(InStr[i])) - 32 == int(InStr[j]))
+                        {
+                            bFound = true;
+                            break;
+                        }
+                    }
+                    else if ((int(InStr[j])) - 32 == int(InStr[i]))
+                    {
+                            bFound = true;
+                            break;
+                    }
+                }
+            };
+        }
+
+        bFound ? TempString[i] = ')' : TempString[i] = '(';
+    }
+    
+
+    return TempString;
+};
